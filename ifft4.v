@@ -5,8 +5,6 @@ module ifft4(
     output wire signed[7:0] imag_out_0,imag_out_1,imag_out_2,imag_out_3
 );
 
-wire signed[7:0] real_0, real_1, real_2, real_3;
-wire signed[7:0] imag_0, imag_1, imag_2, imag_3;
 
 // 第一级蝴蝶运算
 wire signed[7:0] tmp_real_0, tmp_real_1, tmp_real_2, tmp_real_3;
@@ -27,9 +25,9 @@ wire signed[7:0] tmp2_real_0, tmp2_real_1, tmp2_real_2, tmp2_real_3;
 wire signed[7:0] tmp2_imag_0, tmp2_imag_1, tmp2_imag_2, tmp2_imag_3;
 
 assign tmp2_real_0 = tmp_real_0 + tmp_real_2;
-assign tmp2_real_1 = tmp_real_1 + tmp_imag_3;
+assign tmp2_real_1 = tmp_real_1 - tmp_imag_3;
 assign tmp2_real_2 = tmp_real_0 - tmp_real_2;
-assign tmp2_real_3 = tmp_real_1 - tmp_imag_3;
+assign tmp2_real_3 = tmp_real_1 + tmp_imag_3;
 
 assign tmp2_imag_0 = tmp_imag_0 + tmp_imag_2;
 assign tmp2_imag_1 = tmp_imag_1 - tmp_real_3;
